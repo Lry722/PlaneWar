@@ -36,6 +36,7 @@ public class Enemy2 extends Shooter {
                 new Circle(13, -29, -5)
         }));
         setHP(100);
+        shotInterval = 240;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class Enemy2 extends Shooter {
 
     public ArrayList<Bullet> shoot() {
         ArrayList<Bullet> bullets = new ArrayList<>();
-        if (moveCount - lastShotMoveCount < 120)
+        if (moveCount - lastShotMoveCount < shotInterval)
             return bullets;
 
         Bullet bullet = new Bullet();

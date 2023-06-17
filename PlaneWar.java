@@ -41,7 +41,7 @@ public class PlaneWar extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addKeyListener(inputController);
         backgroundMusic.start();
-        Timer timer = new Timer(16, this);
+        Timer timer = new Timer(10, this);
         timer.start();
     }
 

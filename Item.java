@@ -97,9 +97,10 @@ public class Item extends GameObject {
                 object.getBomb();
                 getBombSound.setFramePosition(0);
                 getBombSound.start();
+                break;
             case SCORE:
                 object.addScore(5);
-
+                break;
             default:
         }
     }

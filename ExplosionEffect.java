@@ -8,7 +8,7 @@ public class ExplosionEffect extends Effect{
     static {
         try {
             for (int i = 0; i < 9; ++i)
-                explosion[i] = ImageIO.read(PlaneWar.class.getClassLoader().getResourceAsStream("explosion/explosion" + (i + 1) + ".png"));
+                explosion[i] = ImageIO.read(PlaneWar.class.getClassLoader().getResourceAsStream("effect/explosion/explosion" + (i + 1) + ".png"));
         } catch (IOException e) {
             System.out.println("加载爆炸效果时出错");
             e.printStackTrace();

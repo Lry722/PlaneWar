@@ -27,15 +27,6 @@ public class Enemy1 extends Shooter {
         }
     }
 
-    @Override
-    public void hit(int damage) {
-        super.hit(damage);
-        if (getHP() == 0) {
-            downSound.setFramePosition(0);
-            downSound.start();
-        }
-    }
-
     public Enemy1() {
         setAppearance(appearance);
         setCollisionBox(new CollisionBox(new Circle[]{
@@ -45,11 +36,21 @@ public class Enemy1 extends Shooter {
                 new Circle(13, -29, -5)
         }));
         setHP(100);
+        shotInterval = 180;
+    }
+
+    @Override
+    public void hit(int damage) {
+        super.hit(damage);
+        if (getHP() == 0) {
+            downSound.setFramePosition(0);
+            downSound.start();
+        }
     }
 
     public ArrayList<Bullet> shoot() {
         ArrayList<Bullet> bullets = new ArrayList<>();
-        if (moveCount - lastShotMoveCount < 120)
+        if (moveCount - lastShotMoveCount < shotInterval)
             return bullets;
 
         Bullet bullet = new Bullet();

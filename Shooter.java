@@ -8,13 +8,14 @@ public abstract class Shooter extends GameObject {
     private long time; //记录受击时间，200毫秒后清除受击记录
     protected int shootCount = 0; //射击计数
     protected int lastShotMoveCount = -1000;
+    protected int shotInterval = 0;
 
     public void init() {
         super.init();
         HP = 0;
         attacked = false;
         shootCount = 0;
-        lastShotMoveCount = -1000;
+        lastShotMoveCount = 0;
     }
 
     public void setHP(int HP) {

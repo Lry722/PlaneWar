@@ -221,9 +221,9 @@ public class GameProcessController {
             bossOnStage = true;
         }
 
-        //当没boss时才刷怪，刷怪速度随时间递增,初始时为每隔210帧出一个，每过1秒该间隔减2帧,最低为20帧
+        //当没boss时才刷怪，刷怪速度随时间递增,初始时为每隔210帧出一个，每过1秒该间隔减2帧,最低为30帧
         Random random = new Random();
-        if (!bossOnStage && frameCount - lastEnemyFrame > max((210 - frameCount / 30),20)) {
+        if (!bossOnStage && frameCount - lastEnemyFrame > max((210 - frameCount / 30),30)) {
             lastEnemyFrame = frameCount;
             Shooter newEnemy;
             if (random.nextBoolean()) {

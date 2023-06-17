@@ -104,6 +104,7 @@ public class Player extends Shooter {
         score = 0;
         setHP(200);
         visible = true;
+        lastShotMoveCount = -1000;
     }
 
     @Override
@@ -140,15 +141,14 @@ public class Player extends Shooter {
     @Override
     public ArrayList<Bullet> shoot() {
         ArrayList<Bullet> bullets = new ArrayList<>();
-        int interval;
         if (level >= 5)
-            interval = 15;
+            shotInterval = 20;
         else if (level >= 4)
-            interval = 25;
+            shotInterval = 30;
         else
-            interval = 30;
+            shotInterval = 40;
 
-        if (moveCount - lastShotMoveCount < interval)
+        if (moveCount - lastShotMoveCount < shotInterval)
             return bullets;
 
         Bullet bullet = new Bullet();
@@ -181,6 +181,7 @@ public class Player extends Shooter {
         }
         lastShotMoveCount = moveCount;
         shootCount += 1; //发射计数
+
         bulletSound.setFramePosition(0);
         bulletSound.start();
 

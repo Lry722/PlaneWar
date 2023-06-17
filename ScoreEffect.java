@@ -8,7 +8,7 @@ public class ScoreEffect extends Effect{
     static {
         try {
             for (int i = 0; i < 3; ++i)
-                score[i] = ImageIO.read(PlaneWar.class.getClassLoader().getResourceAsStream("score/score" + (i + 1) + ".png"));
+                score[i] = ImageIO.read(PlaneWar.class.getClassLoader().getResourceAsStream("effect/score/score" + (i + 1) + ".png"));
         } catch (IOException e) {
             System.out.println("加载得分道具效果时出错");
             e.printStackTrace();
