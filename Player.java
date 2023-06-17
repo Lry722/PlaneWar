@@ -3,8 +3,6 @@ import javax.sound.sampled.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -104,7 +102,7 @@ public class Player extends Shooter {
         score = 0;
         setHP(200);
         visible = true;
-        lastShotMoveCount = -1000;
+        lastShootMoveCount = -1000;
     }
 
     @Override
@@ -142,13 +140,13 @@ public class Player extends Shooter {
     public ArrayList<Bullet> shoot() {
         ArrayList<Bullet> bullets = new ArrayList<>();
         if (level >= 5)
-            shotInterval = 20;
+            shootInterval = 20;
         else if (level >= 4)
-            shotInterval = 30;
+            shootInterval = 30;
         else
-            shotInterval = 40;
+            shootInterval = 40;
 
-        if (moveCount - lastShotMoveCount < shotInterval)
+        if (moveCount - lastShootMoveCount < shootInterval)
             return bullets;
 
         Bullet bullet = new Bullet();
@@ -179,7 +177,7 @@ public class Player extends Shooter {
             bullets.add(super.shoot(53, 60, 0, 12, light.clone()));
             bullets.add(super.shoot(-53, 60, 0, 12, light.clone()));
         }
-        lastShotMoveCount = moveCount;
+        lastShootMoveCount = moveCount;
         shootCount += 1; //发射计数
 
         bulletSound.setFramePosition(0);

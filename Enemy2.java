@@ -5,8 +5,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -36,7 +34,7 @@ public class Enemy2 extends Shooter {
                 new Circle(13, -29, -5)
         }));
         setHP(100);
-        shotInterval = 240;
+        shootInterval = 240;
     }
 
     @Override
@@ -50,7 +48,7 @@ public class Enemy2 extends Shooter {
 
     public ArrayList<Bullet> shoot() {
         ArrayList<Bullet> bullets = new ArrayList<>();
-        if (moveCount - lastShotMoveCount < shotInterval)
+        if (moveCount - lastShootMoveCount < shootInterval)
             return bullets;
 
         Bullet bullet = new Bullet();
@@ -64,7 +62,7 @@ public class Enemy2 extends Shooter {
         bullets.add(super.shoot(0, 0, 0, -3, bullet));
         bullets.add(super.shoot(0, 0, -1, -3, bullet));
         bullets.add(super.shoot(0, 0, 1, -3, bullet));
-        lastShotMoveCount = moveCount;
+        lastShootMoveCount = moveCount;
 
         return bullets;
     }

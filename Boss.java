@@ -3,8 +3,6 @@ import javax.sound.sampled.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -84,7 +82,7 @@ public class Boss extends Shooter{
             return bullets;
         else if (moveCount <= 100)
         {
-            if (moveCount - lastShotMoveCount < 10)
+            if (moveCount - lastShootMoveCount < 10)
                 return bullets;
             bullet.setAppearance(bullet2Appearance);
             bullet.setCollisionBox(new CollisionBox(new Circle[]{
@@ -95,7 +93,7 @@ public class Boss extends Shooter{
             bullets.add(super.shoot(42,-12, Math.cos(radians) * 4,-Math.sin(radians) * 4,bullet));
         }
         else if (moveCount <= 180) {
-            if (moveCount - lastShotMoveCount < 10)
+            if (moveCount - lastShootMoveCount < 10)
                 return bullets;
             bullet.setAppearance(bullet2Appearance);
             bullet.setCollisionBox(new CollisionBox(new Circle[]{
@@ -108,12 +106,12 @@ public class Boss extends Shooter{
             switch (shootCount % 9)
             {
                 case 0:
-                    if (moveCount - lastShotMoveCount < 30)
+                    if (moveCount - lastShootMoveCount < 30)
                         return bullets;
                 case 1:
                 case 2:
                 case 3:
-                    if (moveCount - lastShotMoveCount < 20)
+                    if (moveCount - lastShootMoveCount < 20)
                         return bullets;
                     bullet.setAppearance(bullet1Appearance);
                     bullet.setCollisionBox(new CollisionBox(new Circle[]{
@@ -124,10 +122,10 @@ public class Boss extends Shooter{
                     bullets.add(super.shoot(62,-17,0,-4,bullet));
                     break;
                 case 4:
-                    if (moveCount - lastShotMoveCount < 30)
+                    if (moveCount - lastShootMoveCount < 30)
                         return bullets;
                 case 5:
-                    if (moveCount - lastShotMoveCount < 20)
+                    if (moveCount - lastShootMoveCount < 20)
                         return bullets;
                     bullet.setAppearance(bullet2Appearance);
                     bullet.setCollisionBox(new CollisionBox(new Circle[]{
@@ -141,11 +139,11 @@ public class Boss extends Shooter{
                     bullets.add(super.shoot(42, -12, 2, -3, bullet));
                     break;
                 case 6:
-                    if (moveCount - lastShotMoveCount < 30)
+                    if (moveCount - lastShootMoveCount < 30)
                         return bullets;
                 case 7:
                 case 8:
-                    if (moveCount - lastShotMoveCount < 20)
+                    if (moveCount - lastShootMoveCount < 20)
                         return bullets;
                     bullet.setAppearance(bullet2Appearance);
                     bullet.setCollisionBox(new CollisionBox(new Circle[]{
@@ -158,7 +156,7 @@ public class Boss extends Shooter{
                     break;
             }
         }
-        lastShotMoveCount = moveCount;
+        lastShootMoveCount = moveCount;
         ++shootCount;
         return bullets;
     }
