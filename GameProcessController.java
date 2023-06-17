@@ -154,8 +154,8 @@ public class GameProcessController {
         for (Shooter enemy : enemies) {
             if (enemy.collideWith(player)) {
                 System.out.println("玩家和敌机碰撞");
-                player.hit(50);
-                enemy.hit(50);
+                player.hit(10);
+                enemy.hit(10);
                 break;
             }
         }
