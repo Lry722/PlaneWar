@@ -36,21 +36,22 @@ public class Item extends GameObject {
     }
 
     public enum EFFECT {LEVEL_UP, SHIELD, BOMB, SCORE}
+
     EFFECT effect;
 
     public static Item generateItem() {
         double rd = new Random().nextDouble();
         Item newItem = null;
-        if (rd < 0.05) {
+        if (rd < 0.1) {
             newItem = new Item(EFFECT.SHIELD);
             System.out.println("生成护盾道具");
-        } else if (rd < 0.1) {
+        } else if (rd < 0.2) {
             newItem = new Item(EFFECT.LEVEL_UP);
             System.out.println("生成升级道具");
-        } else if (rd < 0.15) {
+        } else if (rd < 0.3) {
             newItem = new Item(EFFECT.BOMB);
             System.out.println("生成炸弹道具");
-        } else if (rd < 0.35) {
+        } else if (rd < 0.5) {
             newItem = new Item(EFFECT.SCORE);
             System.out.println("生成得分道具");
         }
@@ -77,7 +78,7 @@ public class Item extends GameObject {
     public Item(EFFECT effect) {
         this.effect = effect;
         setCollisionBox(new CollisionBox(new Circle[]{
-                new Circle(28,0,0)
+                new Circle(28, 0, 0)
         }));
     }
 

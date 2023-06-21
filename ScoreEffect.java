@@ -2,8 +2,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class ScoreEffect extends Effect{
-    private static BufferedImage [] score = new BufferedImage[3];
+public class ScoreEffect extends Effect {
+    private static BufferedImage[] score = new BufferedImage[3];
 
     static {
         try {

@@ -69,7 +69,7 @@ public abstract class Shooter extends GameObject {
     protected final Bullet shoot(int x, int y, double vx, double vy, Bullet bullet) {
         Bullet newBullet = bullet.clone();
         Point bulletPos = getPos();
-        bulletPos.translate(x,y);
+        bulletPos.translate(x, y);
         newBullet.setPos(bulletPos);
         newBullet.setVelocity(vx, vy);
 

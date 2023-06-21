@@ -1,12 +1,12 @@
 import java.awt.*;
 
-public class Circle implements Cloneable{
+public class Circle implements Cloneable {
     private int radius; //圆形半径
     private Point center; //圆心
 
     public Circle(int radius, int x, int y) {
         this.radius = radius;
-        center = new Point(x,y);
+        center = new Point(x, y);
     }
 
     public Point getCenter() {
@@ -14,9 +14,8 @@ public class Circle implements Cloneable{
     }
 
     //平移
-    public void translate(Point diff)
-    {
-        center.translate(diff.x,diff.y);
+    public void translate(Point diff) {
+        center.translate(diff.x, diff.y);
     }
 
     // 判断两个圆是否相交

@@ -2,8 +2,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class ExplosionEffect extends Effect{
-    private static BufferedImage [] explosion = new BufferedImage[9];
+public class ExplosionEffect extends Effect {
+    private static BufferedImage[] explosion = new BufferedImage[9];
 
     static {
         try {

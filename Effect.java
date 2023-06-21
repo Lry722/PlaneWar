@@ -1,12 +1,12 @@
 import java.awt.image.BufferedImage;
 
-public class Effect extends GameObject{
-    private BufferedImage [] frames;
+public class Effect extends GameObject {
+    private BufferedImage[] frames;
     private int cur = 0;
     private boolean loop = false;
     protected int nextCalledCount = 0;
 
-    public Effect(BufferedImage [] frames) {
+    public Effect(BufferedImage[] frames) {
         this.frames = frames;
     }
 
@@ -17,7 +17,7 @@ public class Effect extends GameObject{
 
     public BufferedImage current() {
         if (cur == frames.length)
-                throw new IndexOutOfBoundsException("next在Effect播放已结束时被调用");
+            throw new IndexOutOfBoundsException("next在Effect播放已结束时被调用");
         return frames[cur];
     }
 
@@ -29,6 +29,7 @@ public class Effect extends GameObject{
 
         return back;
     }
+
     public final boolean hasNext() {
         return cur < frames.length;
     }

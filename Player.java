@@ -73,15 +73,13 @@ public class Player extends Shooter {
             bomb += 1;
     }
 
-    public boolean bomb()
-    {
+    public boolean bomb() {
         if (bomb > 0) {
             bombSound.setFramePosition(0);
             bombSound.start();
             bomb -= 1;
             return true;
-        }
-        else
+        } else
             return false;
     }
 
@@ -186,5 +184,7 @@ public class Player extends Shooter {
         return bullets;
     }
 
-    public int getBombsCount() {return bomb;}
+    public int getBombsCount() {
+        return bomb;
+    }
 }
