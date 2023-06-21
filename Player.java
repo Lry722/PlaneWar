@@ -185,4 +185,6 @@ public class Player extends Shooter {
 
         return bullets;
     }
+
+    public int getBombsCount() {return bomb;}
 }

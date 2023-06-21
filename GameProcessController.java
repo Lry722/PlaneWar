@@ -94,7 +94,7 @@ public class GameProcessController {
             clear();
             gameState = GameState.LOSS;
         }
-        if (paused || gameState == GameState.LOSS)
+        if (paused || gameState != GameState.INGAME)
             return;
 
         //移动所有Enemy,Bullet,Item一次,若enemy移动后x < 0 或 x > gameSize.x则反转水平速度，所有对象移动后若y < 0或y > gameSize.y则移除该对象
@@ -177,6 +177,7 @@ public class GameProcessController {
                 player.addScore(10);
                 if (enemy == boss)
                 {
+                    bossOnStage = false;
                     player.addScore(90);
                     player.addScore(getTimeLeft());
                     player.setVisible(false);
@@ -221,9 +222,9 @@ public class GameProcessController {
             bossOnStage = true;
         }
 
-        //当没boss时才刷怪，刷怪速度随时间递增,初始时为每隔210帧出一个，每过1秒该间隔减2帧,最低为30帧
+        //当没boss时才刷怪，刷怪速度随时间递增,初始时为每隔210帧出一个，每过1秒该间隔减1
         Random random = new Random();
-        if (!bossOnStage && frameCount - lastEnemyFrame > max((210 - frameCount / 30),30)) {
+        if (!bossOnStage && frameCount - lastEnemyFrame > (210 - getTimePassed())) {
             lastEnemyFrame = frameCount;
             Shooter newEnemy;
             if (random.nextBoolean()) {
@@ -279,7 +280,15 @@ public class GameProcessController {
         return timeLimit - getTimePassed();
     }
 
+    public int getPlayerHp() {return  player.getHP();}
+
+    public int getBossHp() {return boss.getHP();}
+
+    public int getBombsCount() {return player.getBombsCount();}
+
     public int getScore() {
         return player.getScore();
     }
+
+    public boolean isPaused() {return paused;}
 }

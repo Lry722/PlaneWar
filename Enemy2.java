@@ -34,7 +34,7 @@ public class Enemy2 extends Shooter {
                 new Circle(13, -29, -5)
         }));
         setHP(100);
-        shootInterval = 240;
+        shootInterval = 300;
     }
 
     @Override

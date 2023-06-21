@@ -30,7 +30,7 @@ public class PlaneWar extends JFrame implements ActionListener {
     private final Point gameSize = new Point(background.getWidth(),background.getHeight());
     private final GameProcessController controller = new GameProcessController(gameSize);
     private final InputController inputController = new InputController();
-
+    private final UI ui = new UI();
 
     public PlaneWar() {
         super("飞机大战");
@@ -39,7 +39,7 @@ public class PlaneWar extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addKeyListener(inputController);
         backgroundMusic.start();
-        Timer timer = new Timer(10, this);
+        Timer timer = new Timer(15, this);
         timer.start();
     }
 
@@ -48,15 +48,14 @@ public class PlaneWar extends JFrame implements ActionListener {
         if (e.getSource() instanceof Timer) {
             if (inputController.isGameStart() && controller.getGameState() != GameProcessController.GameState.INGAME)
                 controller.init();
-            if (controller.getGameState() != GameProcessController.GameState.INGAME)
-                return;
             controller.setPlayerVelocity(inputController.getVx(),inputController.getVy());
             if (inputController.isUseBomb())
                 controller.useBomb();
             if (inputController.isPause())
                 controller.pause();
             controller.update();
-            repaint();
+            if (!controller.isPaused())
+                repaint();
         }
     }
 
@@ -76,6 +75,19 @@ public class PlaneWar extends JFrame implements ActionListener {
             objectPos.translate(-objectAppearance.getWidth() / 2,objectAppearance.getHeight() / 2);
             imageGraphics.drawImage(objectAppearance, objectPos.x, gameSize.y - objectPos.y, null);
         }
+        imageGraphics.setColor(Color.WHITE);
+        imageGraphics.setFont(new Font("黑体",Font.BOLD,30));
+        if (controller.getGameState() == GameProcessController.GameState.START)
+            ui.drawStart(imageGraphics);
+        else if (controller.getGameState() == GameProcessController.GameState.INGAME)
+            ui.drawInGame(imageGraphics,controller.getPlayerHp(),controller.getScore(),controller.getTimeLeft(),controller.getBombsCount());
+        else if (controller.getGameState() == GameProcessController.GameState.WIN)
+            ui.drawWin(imageGraphics,controller.getScore());
+        else if (controller.getGameState() == GameProcessController.GameState.LOSS)
+            ui.drawLoss(imageGraphics,controller.getScore());
+
+        if (controller.isBossOnStage())
+            ui.drawBossHP(imageGraphics,controller.getBossHp());
         //将缓冲的image绘制到窗口上
         g.drawImage(image,0,0,null);
     }
